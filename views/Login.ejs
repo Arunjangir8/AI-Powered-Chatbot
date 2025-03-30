@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+<div class="mainboxform">
+    <div class="container">
+        
+        <div class="tabs">
+            <div class="tab active" onclick="switchForm('login')">LOGIN</div>
+            <div class="tab" onclick="switchForm('register')">REGISTRATION</div>
+        </div>
+
+        <div>
+
+        </div>
+        
+        <div class="form-container">
+            <!-- Login Form -->
+            <form action="/Home" method="post" class="LoginForm active">
+                <h3 style="text-align: center; font-weight: bold;">LOGIN</h3>
+                <label for="mailidtologin">Email</label>
+                <input type="email" required name="givenemail" id="mailidtologin" >
+
+                <label for="passforlogin">Password</label>
+                <input type="password" required name="givenpass" id="passforlogin" >
+                <button type="submit">Login</button>
+                <div class="switch-text">
+                    Don't have an account? <span class="switch-link" onclick="switchForm('register')">Register here</span>
+                </div>
+            </form>
+            
+            <!-- Registration Form -->
+            <form action="/submit" method="POST" id="formForReg" class="custom-form">
+                <h3 style="text-align: center; font-weight: bold;">REGISTRATION</h3>
+                <label for="name">Name</label>
+                <input type="text" name="name" required >
+                <label for="email">Email</label>
+                <input type="email" name="email" required >
+                <label for="password">Password</label>
+                <input type="password" name="password" required >
+                <button type="submit">Submit</button>
+                <div class="switch-text">
+                    Already have an account? <span class="switch-link" onclick="switchForm('login')">Login here</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <script>
+        function switchForm(formType) {
+            const loginForm = document.querySelector('.LoginForm');
+            const registerForm = document.getElementById('formForReg');
+            const loginTab = document.querySelector('.tab:nth-child(1)');
+            const registerTab = document.querySelector('.tab:nth-child(2)');
+            
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+            } else {
+                loginForm.classList.remove('active');
+                registerForm.classList.add('active');
+                loginTab.classList.remove('active');
+                registerTab.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
